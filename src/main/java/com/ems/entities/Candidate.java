@@ -1,23 +1,19 @@
-package com.ems.candidate.entity;
+package com.ems.entities;
 
-import com.ems.election.entity.Election;
-import com.ems.party.entity.Party;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "candidate")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
+@Setter
 public class Candidate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "candidate_id")
+    @Setter(AccessLevel.NONE)
     private long id;
     @Column(name = "first_name", nullable = false)
     private String firstName;
@@ -31,7 +27,7 @@ public class Candidate {
     private LocalDateTime dob;
     @Column(name = "gender", nullable = false)
     private String gender;
-    @Column(name = "nationality", columnDefinition = "default varchar usa")
+    @Column(name = "nationality", columnDefinition = "varchar(255) default 'usa'")
     private String nationality;
     @ManyToOne
     @JoinColumn(name = "party_id")
@@ -50,7 +46,7 @@ public class Candidate {
     private String email;
     @Column(name = "address", nullable = false)
     private String address;
-    @Column(name = "criminal_record", columnDefinition = "default boolean false")
+    @Column(name = "criminal_record", columnDefinition = "boolean default false")
     private boolean criminalRecord;
     @ManyToOne
     @JoinColumn(name = "election_id")

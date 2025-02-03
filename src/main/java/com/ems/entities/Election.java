@@ -1,29 +1,28 @@
-package com.ems.election.entity;
+package com.ems.entities;
 
-import com.ems.candidate.entity.Candidate;
-import com.ems.party.entity.Party;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
 import java.util.Set;
 
 @Entity
 @Table(name = "election")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Election {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "election_id")
+    @Setter(AccessLevel.NONE)
     private long id;
     @Column(name = "name", unique = true, nullable = false)
     private String name;
     @Column(name = "type", nullable = false)
     private String type;
-    @OneToMany(mappedBy = "election")
+    @OneToMany(mappedBy = "election", cascade = CascadeType.ALL)
     private Set<Candidate> candidates;
     @ManyToMany(mappedBy = "elections")
     @JsonBackReference

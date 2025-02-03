@@ -1,12 +1,8 @@
-package com.ems.party.entity;
+package com.ems.entities;
 
-import com.ems.candidate.entity.Candidate;
-import com.ems.election.entity.Election;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Set;
 
@@ -19,6 +15,7 @@ public class Party {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "party_id")
+    @Setter(AccessLevel.NONE)
     private long id;
     @Column(name = "name", unique = true, nullable = false)
     private String name;

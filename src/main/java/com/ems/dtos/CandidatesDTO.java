@@ -1,4 +1,4 @@
-package com.ems.services;
+package com.ems.dtos;
 
 import lombok.Data;
 
@@ -14,7 +14,7 @@ public class CandidatesDTO {
     private String gender;
     private String nationality;
     private Long partyId;
-    private String positions;
+    private String position;
     private String state;
     private String district;
     private String educationQualification;
